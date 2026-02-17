@@ -1,0 +1,20 @@
+{
+  "name": "calc_server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/CadLin05/Calculator_Server#readme",
+  "bugs": {
+    "url": "https://github.com/CadLin05/Calculator_Server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CadLin05/Calculator_Server.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
