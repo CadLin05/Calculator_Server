@@ -1,0 +1,8 @@
+2. Create a fresh NodeJS/Express setup
+    - The server should contain proper config files
+    - The server should connect to a MySQL database
+    - The server should contain 2 routes
+        - 1 route should be a POST request that receives mathmatical evaluation data
+            - value1, value2, mathmatical operation
+        - 1 route should be a GET request that returns all mathamtical evaluation data from the database to the client
+    - The server should be properly organized in a modular style
