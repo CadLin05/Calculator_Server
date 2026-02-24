@@ -4,13 +4,14 @@ import { type ResultSetHeader, type RowDataPacket } from "mysql2";
 import { error } from "node:console";
 
 export const registerNewCalc = async (calcInfo: calcInput) => {
+    /* old stuff, dont need to update 
     //making sure it updates if there is a calculation already 
     const query = "SELECT * FROM calculation"
     const [rows] = await pool.execute<RowDataPacket[]>(query);
     if (rows.length === 0){
         const data = await pool.execute<ResultSetHeader>(
-        `INSERT INTO calculation(val1,val2,operator) VALUES(?,?,?)`,
-        [calcInfo.val1, calcInfo.val2, calcInfo.operator],
+        `INSERT INTO calculation(val1,val2,operator,answer) VALUES(?,?,?,?)`,
+        [calcInfo.val1, calcInfo.val2, calcInfo.operator, calcInfo.answer],
     );
 
     if(data[0].affectedRows > 0){
@@ -29,6 +30,18 @@ export const registerNewCalc = async (calcInfo: calcInput) => {
         console.log("calculation updated");
         return true;
     }
+    }
+    */
+    const data = await pool.execute<ResultSetHeader>(
+        `INSERT INTO calculation(val1,val2,operator,answer) VALUES(?,?,?,?)`,
+        [calcInfo.val1, calcInfo.val2, calcInfo.operator, calcInfo.answer],
+    );
+    if(data[0].affectedRows > 0){
+        console.log("rows changed");
+        return true;
+    }else{
+        console.log("error with registration: ", error);
+        return false;
     }
     
 }

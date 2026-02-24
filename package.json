@@ -18,7 +18,9 @@
     "start:dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/main.js\""
   },
   "dependencies": {
+    "@types/cors": "^2.8.19",
     "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "mysql2": "^3.17.3"
   },

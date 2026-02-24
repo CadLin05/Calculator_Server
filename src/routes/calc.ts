@@ -1,14 +1,16 @@
 import { Router } from "express";
 import { registerNewCalc, getCalc } from "../controllers/calc.js";
 import type { calcInput } from "../types/types.js";
+
 const router = Router();
 
 router.post("/calculation", async(req, res) =>{
     const val1: number = req.body.val1;
     const val2: number = req.body.val2;
     const operator: string = req.body.operator;
-    if (val1 !== undefined && val2 !== undefined && operator !== undefined){
-        const calcInfo: calcInput = { val1, val2, operator };
+    const answer: number = req.body.answer;
+    if (val1 !== undefined && val2 !== undefined && operator !== undefined && answer !== undefined){
+        const calcInfo: calcInput = { val1, val2, operator, answer };
         const insert = await registerNewCalc(calcInfo);
     
     if (insert){
@@ -30,4 +32,5 @@ router.get("/getdata", async (req,res) => {
         res.status(500).json({ success: false })
     }
 });
+
 export default router;
