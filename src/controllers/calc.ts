@@ -57,3 +57,15 @@ export const getCalc = async() =>{
         console.log("no data returned for the getCalc func:", error);
     }
 }
+
+export const clearCalc = async() =>{
+    const query = `TRUNCATE TABLE calculation`;
+    const data = await pool.execute(query);
+    if(data){
+        console.log("table cleared");
+        return true;
+    }else{
+        console.log("error with deletion");
+        return false;
+    }
+}

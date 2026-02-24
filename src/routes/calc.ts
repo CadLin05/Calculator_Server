@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerNewCalc, getCalc } from "../controllers/calc.js";
+import { registerNewCalc, getCalc, clearCalc } from "../controllers/calc.js";
 import type { calcInput } from "../types/types.js";
 
 const router = Router();
@@ -31,6 +31,18 @@ router.get("/getdata", async (req,res) => {
         console.error("GET ROUTE ERROR: ", err);
         res.status(500).json({ success: false })
     }
+});
+
+router.delete("/clear", async (req, res) => {
+  try {
+    const data = await clearCalc();
+    if(data){
+    res.json({ success: true, message: "All calculations deleted" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: "Server error" });
+  }
 });
 
 export default router;
